@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PK Trading Com</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 74, 173, 0.95);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffcc00;
+    }
+
+    /* Mobile menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                  url('https://tse2.mm.bing.net/th/id/OIP.Zbd0VVAztrLnWNFAqLmungHaHa?w=800&h=800&rs=1&pid=ImgDetMain&o=7&rm=3') no-repeat center center/cover;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #ffcc00;
+      color: #333;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ffaa00;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2.2em;
+      margin-bottom: 30px;
+      color: #004aad;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* Products */
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 300px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .service-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 15px;
+      color: #004aad;
+    }
+
+    /* Industries */
+    .industries {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .industry-card {
+      width: 300px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .industry-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .industry-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .industry-card div {
+      padding: 20px;
+    }
+
+    .industry-card h3 {
+      color: #004aad;
+      margin-bottom: 10px;
+    }
+
+    /* Contact */
+    #contact p {
+      margin: 12px 0;
+      font-size: 1.2em;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #004aad;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav ul {
+        flex-direction: column;
+        background-color: rgba(0,74,173,0.95);
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 200px;
+        height: 100vh;
+        transition: 0.3s;
+        padding-top: 30px;
+      }
+
+      nav ul.active {
+        right: 0;
+      }
+
+      .services, .industries {
+        flex-direction: column;
+      }
+
+      .hero h1 {
+        font-size: 2.5em;
+      }
+
+      .hero p {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">PK Trading Com</div>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Products</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <h1>PK Trading Com</h1>
+    <p>Your trusted partner in trading and supply services</p>
+    <a href="#contact" class="btn">Contact Us</a>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>PK Trading Com is a professional trading company providing high-quality products and reliable services worldwide. We focus on trust, transparency, and building long-term business relationships with our clients.</p>
+  </section>
+
+  <!-- Products -->
+  <section id="services">
+    <h2>Our Products</h2>
+    <div class="services">
+      <div class="service-card">
+        <h3>Color Lamination Film</h3>
+        <img src="https://tse1.mm.bing.net/th/id/OIP.PmKNA3qfXDRbdZRSAk_ODgHaFR?pid=ImgDet&w=184&h=131&c=7&dpr=1.3&o=7&rm=3" alt="Color Lamination Film">
+        <p>High-quality color lamination films for packaging and decorative purposes, providing durability and shine.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Holographic Film</h3>
+        <img src="https://tse3.mm.bing.net/th/id/OIP.ApezW5X4MnR_E0L9Q-r4_gHaHa?w=89&h=90&c=1&rs=1&qlt=70&r=0&o=7&dpr=1.3&pid=InlineBlock&rm=3" alt="Holographic Film">
+        <p>Eye-catching holographic films to make your packaging and products stand out with a premium finish.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>BOPP Film</h3>
+        <img src="https://europlas.com.vn/Data/Sites/1/media/000000how-to-recycle-bopp-films-001-(2)-(1).jpg" alt="BOPP Film">
+        <p>Top-grade BOPP films for lamination, packaging, and printing, ensuring clarity, strength, and long-lasting performance.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Thermal Film</h3>
+        <img src="https://i0.wp.com/gr-film.com/wp-content/uploads/2022/10/001-6.jpg?fit=2000%2C1500&ssl=1" alt="Thermal Film">
+        <p>Reliable thermal films for specialized applications, delivering high quality and consistency in performance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries We Serve -->
+  <section id="industries">
+    <h2>Industries We Serve</h2>
+    <div class="industries">
+      <div class="industry-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrXwLqHQWacW_KILHg-yQZ3zHCeDPc4YIdMA&s" alt="Box Packaging">
+        <div>
+          <h3>Box Packaging</h3>
+          <p>We provide high-quality films and solutions for box and product packaging industries.</p>
+        </div>
+      </div>
+
+      <div class="industry-card">
+        <img src="https://m.media-amazon.com/images/I/81ZSpmpqmyL.jpg" alt="Cake Base">
+        <div>
+          <h3>Cake Base</h3>
+          <p>Durable and decorative film materials for cake base and bakery packaging applications.</p>
+        </div>
+      </div>
+
+      <div class="industry-card">
+        <img src="https://m.media-amazon.com/images/I/71ZlaVKcuSL._AC_UF1000,1000_QL80_.jpg" alt="Printing Industry">
+        <div>
+          <h3>Printing Industry</h3>
+          <p>Supplying premium BOPP, holographic, and thermal films for the printing and packaging sectors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Registered Office: A-72, Gali No. 1, Shastri Park, Delhi - 110053</p>
+    <p>📞 Phone: 9953424130, 9899004698</p>
+    <p>✉️ Email: Pktrading4773@gmail.com</p>
+
+    <form id="contactForm" style="max-width:600px; margin:auto; margin-top:30px; display:flex; flex-direction:column; gap:15px;">
+      <label for="product">Product Name</label>
+      <select id="product" name="product" required style="padding:10px; border-radius:5px; border:1px solid #ccc;">
+        <option value="">Select Product</option>
+        <option value="color-lamination-film">Color Lamination Film</option>
+        <option value="holographic-film">Holographic Film</option>
+        <option value="bopp-film">BOPP Film</option>
+        <option value="thermal-film">Thermal Film</option>
+      </select>
+
+      <label for="micron">Micron</label>
+      <input type="text" id="micron" name="micron" placeholder="Enter Micron" required style="padding:10px; border-radius:5px; border:1px solid #ccc;">
+
+      <label for="quantity">Quantity</label>
+      <input type="text" id="quantity" name="quantity" placeholder="Enter Quantity" required style="padding:10px; border-radius:5px; border:1px solid #ccc;">
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" placeholder="Enter Your Address" required style="padding:10px; border-radius:5px; border:1px solid #ccc; resize:none;"></textarea>
+
+      <label for="contactno">Contact No</label>
+      <input type="tel" id="contactno" name="contactno" placeholder="Enter Contact Number" required style="padding:10px; border-radius:5px; border:1px solid #ccc;">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter Email" required style="padding:10px; border-radius:5px; border:1px solid #ccc;">
+
+      <button type="submit" style="padding:12px; background-color:#004aad; color:#fff; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">Submit</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2000 PK Trading Com | All Rights Reserved</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // ===== Mobile Menu Toggle =====
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('#nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // ===== Contact Form Submission =====
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const product = document.getElementById('product').value;
+      const email = document.getElementById('email').value;
+      alert(`Thank you for your inquiry!\nProduct: ${product}\nWe will contact you soon at ${email}.`);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
